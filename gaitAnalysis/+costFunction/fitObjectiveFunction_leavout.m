@@ -23,12 +23,14 @@ logInds = 1:8;
 w = zeros(6,4);
 
 for leaveout = 1:6
+    
+    % fit the cost function weight across all subjects except for leaveout
     A = [];
     all = 1:6;
+    all(leaveout) = [];
     for p = all
         goodInd = []; badInd = [];
         for num = logInds
-            %             sprintf('Leaveout %i, Evaluating Subject %i, Validation %i',leaveout,p,num)
             log = patientLogData(p,num);
             if ~isempty(log.t)
                 numsteps =    log.numsteps;
@@ -74,9 +76,9 @@ for leaveout = 1:6
     beq = 1;
     A = [A; -eye(4)];
     w(leaveout,:) = fmincon(fun,w0,A,zeros(size(A,1),1),Aeq,beq);
-    %     w(leaveout,:) = [8.04096e-4, 1.1618e-1, 3.8328e-3, 8.7918e-1];
     
-    % leave one out patient
+    % evaluate the prediction power of w on the validation preferences for
+    % the leftout subject
     for p = leaveout
         for num = logInds
             %             sprintf('Evaluating Subject %i, Validation %i',p,num)
@@ -117,6 +119,7 @@ for leaveout = 1:6
 end
 
 
+% go through the predicted accuracty for each subject
 for i = 1:6
     temp = [];
     for m = 1:length(goodTrials(i,(goodTrials(i,:) ~= 0)))
@@ -130,5 +133,5 @@ for i = 1:6
     end
     validations{i} = sum(temp)/length(temp);
 end
-validations
-val_avg = sum(cell2mat(validations))/6
+validations;
+val_avg = sum(cell2mat(validations))/6;
