@@ -7,23 +7,11 @@ from matplotlib import rc
 def run_sim(KP, KD, human_render = False):
 
 
-    # human_render = True
-    # KP=np.array([[0.47368421,-0.57894737],
-    #             [0.,0.]])
-    # KP *= -1
-    # KD=np.array([[1,-0.05263158],
-    #             [0.,0.]])
-    # KD *= -1
-
-    # kp0: -5 goes a lil crazy, 5 also pushes to the side.
-    # kp1: 20 falls, 40 pushes to the side, 120 also fals
     KP=np.array([[0,80],
                 [0.,0.]])
-    # # KP *= -1
-    # kd1: -2 goes crazy, 2 is ok but moves. maybe -5 to 5?
-    # kd2: -2 goes crazy, 5 is fine
     KD=np.array([[0,5],
                 [0.,0.]])
+    
     class Cartpole:
         """Defines a cart-pole system with the state space (x,theta,x',theta')
         where x is the translation and theta is the angle of the pole
@@ -123,9 +111,6 @@ def run_sim(KP, KD, human_render = False):
         
 
     def PD(x,dx,KP,KD):
-        # print(np.shape(x))
-        # print(np.shape(KP))
-        # print(np.dot(KP,x))
         u = -np.dot(KP,x)-np.dot(KD,dx)
         return u
 
@@ -278,38 +263,3 @@ def run_sim(KP, KD, human_render = False):
           env.render()
     env.close()
     return r
-
-# best_kp=np.array([[3,-0.8],
-#             [0.,0.]])
-# best_kd=np.array([[0.8,-2.0],
-#             [0.,0.]])
-# best = -np.infty
-
-# # run_sim(kp,kd)
-# # smallrange = np.linspace(-10,10,100)
-# smallrange = np.linspace(-1,1,20)
-
-# for a in smallrange:
-#     print(a)
-#     for b in smallrange:
-#         print(b)
-#         for c in smallrange:
-#             for d in smallrange:
-#                 # print(d)
-#                 kp=np.array([[a,b],
-#                     [0.,0.]])
-#                 kd=np.array([[c,d],
-#                     [0.,0.]])
-#                 result = run_sim(kp,kd)
-#                 if result > best:
-                     
-#                     # print(result)
-#                     best = result
-#                     best_kp = kp
-#                     best_kd = kd
-#                     print(best)
-#                     print(best_kp)
-#                     print(best_kd)
-# print(best)
-# print(best_kp)
-# print(best_kd)
