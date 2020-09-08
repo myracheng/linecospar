@@ -10,9 +10,9 @@ LineCoSpar is a human-in-the-loop preference-based algorithm that enables optimi
 ___
 
 ## Respository Contents
-- exoskeleton_pref_learning.py: version of the LineCoSpar algorithm that was deployed on the lower-body exoskeleton for the IROS publication experiments.
-- Plotting: code to plot the simulation results
-- Cartpole experiments: code to run simulated experiments of LineCoSpar on a cart-pole system. This set of simulated experiments, which was not discussed in the IROS publication, provide another example of how the algorithm can be used.
-- gaitAnalysis folder: code to fit various cost function terms to the lower-body exoskeleton experimental preferences. This folder also contains code to plot the CoM and CoP trajectories of the most- and least-preferred gaits.
-- synthetic_fns: code for simulations on the synthetic functions used in the IROS publication.
+- `exoskeleton_pref_learning.py`: version of the LineCoSpar algorithm that was deployed on the lower-body exoskeleton for the IROS publication experiments.
+- `Plotting`: code to plot the simulation results
+- `cartpole_experiments`: code to run simulated experiments of LineCoSpar on a cart-pole system. This set of simulated experiments, which was not discussed in the IROS publication, provide another example of how the algorithm can be used.
+- `gaitAnalysis` folder: code to fit various cost function terms to the lower-body exoskeleton experimental preferences. This folder also contains code to plot the CoM and CoP trajectories of the most- and least-preferred gaits.
+- `synthetic_fns`: code for simulations on the synthetic functions used in the IROS publication.
 
